@@ -68,17 +68,33 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p className="text-gray-400 text-sm">
-            &copy; {currentYear} XEAS Technologies. All rights reserved.
-          </p>
-          <div className="flex space-x-6 text-sm">
-            <Link href="/privacy" className="text-gray-400 hover:text-white transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="text-gray-400 hover:text-white transition-colors">
-              Terms of Service
-            </Link>
+        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col items-center space-y-4">
+          <div className="flex flex-col md:flex-row justify-between items-center w-full space-y-4 md:space-y-0">
+            <p className="text-gray-400 text-sm">
+              &copy; {currentYear} XEAS Technologies. All rights reserved.
+            </p>
+            <div className="flex space-x-6 text-sm">
+              <Link href="/privacy" className="text-gray-400 hover:text-white transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="text-gray-400 hover:text-white transition-colors">
+                Terms of Service
+              </Link>
+            </div>
+          </div>
+
+          {/* Developer Attribution */}
+          <div className="pt-4 border-t border-white/5 w-full flex justify-center">
+            <p className="text-gray-500 text-xs flex items-center gap-1">
+              Crafted by{" "}
+              <a
+                href="mailto:asifnawaz1220@gmail.com"
+                className="text-gray-400 hover:text-primary-400 transition-colors font-medium"
+                title="Contact Asif Nawaz"
+              >
+                Asif Nawaz
+              </a>
+            </p>
           </div>
         </div>
       </div>
