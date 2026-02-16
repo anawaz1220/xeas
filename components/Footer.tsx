@@ -1,10 +1,18 @@
 'use client';
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText("asifnawaz1220@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const footerLinks = {
     Company: [
@@ -85,16 +93,41 @@ export default function Footer() {
 
           {/* Developer Attribution */}
           <div className="pt-4 border-t border-white/5 w-full flex justify-center">
-            <p className="text-gray-500 text-xs flex items-center gap-1">
-              Crafted by{" "}
-              <a
-                href="mailto:asifnawaz1220@gmail.com"
-                className="text-gray-400 hover:text-primary-400 transition-colors font-medium"
-                title="Contact Asif Nawaz"
+            <div className="text-gray-500 text-xs flex items-center gap-1.5 relative">
+              <span>Crafted by</span>
+              <button
+                onClick={copyEmail}
+                className="text-gray-400 hover:text-primary-400 transition-colors font-medium flex items-center gap-1 cursor-pointer"
+                title="Click to copy email"
               >
                 Asif Nawaz
-              </a>
-            </p>
+                <svg
+                  className="w-3 h-3"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                  />
+                </svg>
+              </button>
+              <AnimatePresence>
+                {copied && (
+                  <motion.span
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className="absolute -top-6 left-1/2 -translate-x-1/2 text-primary-400 text-xs whitespace-nowrap"
+                  >
+                    Email copied!
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </div>
